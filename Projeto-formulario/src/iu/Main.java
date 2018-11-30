@@ -8,6 +8,7 @@ import formulario.Formulario;
 import perguntas.Pergunta;
 import perguntasAbertas.TextoCurto;
 import perguntasAbertas.TextoLongo;
+import perguntasFechadas.Alternativa;
 
 public class Main {
 
@@ -23,6 +24,7 @@ public class Main {
 	
 		Pergunta perg;
 		
+		
 		for(int i=0;i<quantidade;i++) {
 			String tipo =JOptionPane.showInputDialog("qual tipo de pergunta deseja criar?"+(1+i));
 			if(tipo.equalsIgnoreCase("texto curto") || tipo.equalsIgnoreCase("textocurto")) {
@@ -30,6 +32,7 @@ public class Main {
 				perg = new TextoCurto();
 				perg.setEnuciadoPergunta(enuciado);
 				p.add(perg);
+				
 			}
 			
 			if(tipo.equalsIgnoreCase("texto longo") || tipo.equalsIgnoreCase("textolongo")) {
@@ -39,7 +42,16 @@ public class Main {
 				p.add(perg);
 			}
 			
-			
+			if(tipo.equalsIgnoreCase("Alternativa")) {
+				// elementos somente em Perguntas;
+				perg = new Alternativa();
+				int quantidadei = Integer.parseInt(JOptionPane.showInputDialog("Qual a quantidade de itens"));
+				
+				for(int j=0;j<quantidade; j++) {
+				//	perg.novaPergunta(enuciadoPergunta, resposta);
+				}
+				
+			}
 			// Lista,excluisva,alternativ....
 		}
 		
