@@ -16,11 +16,14 @@ public abstract class Pergunta {
 	public String getResposta() {
 		return resposta;
 	}
-	public void setResposta(String resposta) {
+	public abstract void setResposta(String resposta);
+	
+	
+	public  void novaPergunta(String enuciadoPergunta,String resposta) {
+		this.enuciadoPergunta = enuciadoPergunta;
 		this.resposta = resposta;
 	}
 	
-	public abstract Pergunta novaPergunta(String enuciadoPergunta);
 	
 
 }

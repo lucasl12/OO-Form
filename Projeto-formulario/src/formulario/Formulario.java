@@ -9,11 +9,23 @@ public class Formulario {
 	
 	private String nomeFormulario;
 	private String descricaoFormulario;
-	private Date dataInicio;
-	private Date dataFinal;
+	private String dataInicio;
+	private String dataFinal;
 	private ArrayList<Pergunta> pergunta = new ArrayList <Pergunta>();
 	
 	
+	
+	
+	
+	public Formulario(String nomeFormulario, String descricaoFormulario, String dataInicio, String dataFinal,
+			ArrayList<Pergunta> pergunta) {
+		super();
+		this.nomeFormulario = nomeFormulario;
+		this.descricaoFormulario = descricaoFormulario;
+		this.dataInicio = dataInicio;
+		this.dataFinal = dataFinal;
+		this.pergunta = pergunta;
+	}
 	public String getNomeFormulario() {
 		return nomeFormulario;
 	}
@@ -26,16 +38,16 @@ public class Formulario {
 	public void setDescricaoFormulario(String descricaoFormulario) {
 		this.descricaoFormulario = descricaoFormulario;
 	}
-	public Date getDataInicio() {
+	public String getDataInicio() {
 		return dataInicio;
 	}
-	public void setDataInicio(Date dataInicio) {
+	public void setDataInicio(String dataInicio) {
 		this.dataInicio = dataInicio;
 	}
-	public Date getDataFinal() {
+	public String getDataFinal() {
 		return dataFinal;
 	}
-	public void setDataFinal(Date dataFinal) {
+	public void setDataFinal(String dataFinal) {
 		this.dataFinal = dataFinal;
 	}
 	public ArrayList<Pergunta> getPergunta() {
