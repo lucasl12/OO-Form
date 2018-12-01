@@ -44,11 +44,14 @@ public class Main {
 			
 			if(tipo.equalsIgnoreCase("Alternativa")) {
 				// elementos somente em Perguntas;
-				perg = new Alternativa();
+				Alternativa alt = new Alternativa();
+				perg = alt;
 				int quantidadei = Integer.parseInt(JOptionPane.showInputDialog("Qual a quantidade de itens"));
 				
 				for(int j=0;j<quantidade; j++) {
-				//	perg.novaPergunta(enuciadoPergunta, resposta);
+					alt.novaPergunta(enuciadoPergunta, resposta, itens, quantidadei);
+					((Alternativa)perg)
+//				perg.novaPergunta(enuciadoPergunta, resposta);
 				}
 				
 			}
