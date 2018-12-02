@@ -48,8 +48,8 @@ public class Main {
 			
 		for(int i=0; i<quantidadeperg;i++) {
 			drop = new Drop();
-			opcao = drop.selecionado();
-			System.out.println(opcao);
+		opcao = drop.opcoaos();
+		System.out.println(opcao);
 		
 		}
 	

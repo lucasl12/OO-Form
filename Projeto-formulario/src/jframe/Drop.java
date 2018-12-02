@@ -1,40 +1,69 @@
 package jframe;
 
 import java.awt.FlowLayout;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
-public class Drop extends JFrame {
+public class Drop extends JFrame implements ActionListener{
 	
-	
-	JComboBox<String> combo = new JComboBox<String>(); 
-	public String  item; 
-	
-	public Drop() {
-		setLayout(new FlowLayout());
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		add(combo);
+	String opcao;
+String [] itens = {"Texto Curto","Texto Longo","Lista","Excluisva","Opcional"};
+JComboBox dropdow = new JComboBox(itens);
+
+public Drop() {
+	setLayout(new FlowLayout());
+	setDefaultCloseOperation(EXIT_ON_CLOSE);
+	setSize(400,150);
+	setVisible(true);
+	add(dropdow);
+	dropdow.setSelectedIndex(3);
+	dropdow.addActionListener(this);
+}
+
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	if(e.getSource()== dropdow) {
+		JComboBox cb = (JComboBox)e.getSource();
+		String msg = (String)cb.getSelectedItem();
+		switch(msg) {
+		case "Texto Curto":
+			opcao= "Texto Curto";
+			break;
 		
-		combo.addItem("Texto curto");
-		combo.addItem("Texto Longo");
-		combo.addItem("Lista");
-		combo.addItem("Excluiva");
-		combo.setSelectedItem(5);
-		item = (String) combo.getSelectedItem();
-		setTitle("Tipo de pergunta que deseja criar");
-		setSize(400,150);
-		
-		setVisible(true);
+		case "Texo Longo":
+			opcao = "Texto Longo";
+			break;
+				
+		}
 		
 		
+		
+		
+		
+		}
 	}
-	
-	public String selecionado() {
-		return item;
-		
+
+	public String opcoaos() {
+		return opcao;
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
