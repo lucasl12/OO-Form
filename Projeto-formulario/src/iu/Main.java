@@ -8,7 +8,8 @@ import javax.swing.JTextField;
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import formulario.Formulario;
-import jframe.Drop;
+import jframe.Botao;
+
 import perguntas.Pergunta;
 import perguntasAbertas.TextoCurto;
 import perguntasAbertas.TextoLongo;
@@ -18,9 +19,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Drop drop;
+		Botao menu;
 		ArrayList<Pergunta>p = new ArrayList<Pergunta>();
-		String opcao;
+		int opcao;
+		Pergunta perg;
 
 		JTextField Nomef = new JTextField();
 		JTextField Descf = new JTextField();
@@ -45,78 +47,63 @@ public class Main {
 		String DataFinal = Datafinal.getText().toString();
 		int quantidadeperg = Integer.parseInt(QuantidadePerg.getText().toString());
 			
-			
-		for(int i=0; i<quantidadeperg;i++) {
-			drop = new Drop();
-		opcao = drop.opcoaos();
-		System.out.println(opcao);
-		
-		}
+		for(int i=0;i<quantidadeperg;i++) {
+			menu = new Botao();
+			opcao = menu.opcaos();
+			System.out.println(opcao);}
+		/*
 	
-		
-	/*	
-		
-		
-		
-		
-		for(int i=0;i<quantidade;i++) {
-			String tipo =JOptionPane.showInputDialog("qual tipo de pergunta deseja criar?"+(1+i));
-			if(tipo.equalsIgnoreCase("texto curto") || tipo.equalsIgnoreCase("textocurto")) {
-				String enuciado = JOptionPane.showInputDialog("Qual o enuciado?"+ (1+i));
+			if(opcao==0) {
+				String enuciado = JOptionPane.showInputDialog("Qual o enuciado?");
 				perg = new TextoCurto();
 				perg.setEnuciadoPergunta(enuciado);
 				p.add(perg);
 				
+				
 			}
 			
-			if(tipo.equalsIgnoreCase("texto longo") || tipo.equalsIgnoreCase("textolongo")) {
-				String enuciado = JOptionPane.showInputDialog("Qual o enuciado?"+ (1+i));
+			if(opcao==2) {
+				String enuciado = JOptionPane.showInputDialog("Qual o enuciado?");
 				perg = new TextoLongo();
 				perg.setEnuciadoPergunta(enuciado);
 				p.add(perg);
 			}
 			
-			if(tipo.equalsIgnoreCase("Alternativa")) {
+			if(opcao==3) {
 				// elementos somente em Perguntas;
 				Alternativa alt = new Alternativa();
 				perg = alt;
-				int quantidadei = Integer.parseInt(JOptionPane.showInputDialog("Qual a quantidade de itens"));
-				
-				for(int j=0;j<quantidade; j++) {
-				//	alt.novaPergunta(enuciadoPergunta, resposta, itens, quantidadei);
-				//	((Alternativa)perg)
-//				perg.novaPergunta(enuciadoPergunta, resposta);
-				}
-				
 			}
-			// Lista,excluisva,alternativ....
+			
+		
 		}
 		
 		
-		Formulario f = new Formulario(nomeFormulario,Descricao,DataInicio,DataFinal,p);
 		
-		JOptionPane.showMessageDialog(null, 
-		"--------------Formulario criado!--------------" + "\n" +
-				"Nome do formulario: " + f.getNomeFormulario() +"\n" +
-				"Descrição do formulario: " + f.getDescricaoFormulario() + "\n" +
-				"Data de inicio: " + f.getDataInicio() + "\n " +
-				"Data de Termino: " + f.getDataFinal() + "\n " 
+		Formulario f = new Formulario(nomeFormulario,Descricao,DataInicio,DataFinal,p);
+
+//		
+//		JOptionPane.showMessageDialog(null, 
+//		"--------------Formulario criado!--------------" + "\n" +
+//				"Nome do formulario: " + f.getNomeFormulario() +"\n" +
+//				"Descrição do formulario: " + f.getDescricaoFormulario() + "\n" +
+//				"Data de inicio: " + f.getDataInicio() + "\n " +
+//				"Data de Termino: " + f.getDataFinal() + "\n " ); 
 				
 				//como imprimo as perguntas.
 		
-				
-				);
-		
-		
-		
-		
-		
-		
-		
-		
 	
-	
+		
+		
+		
+		
+		
 		*/
+		
+		
+	
+	
+		
 		
 	}
 
