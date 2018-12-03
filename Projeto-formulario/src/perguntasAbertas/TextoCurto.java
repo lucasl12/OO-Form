@@ -1,6 +1,6 @@
 package perguntasAbertas;
 
-public class TextoCurto extends PerguntaAberta {
+public class TextoCurto extends PerguntaAberta   {
 
 	@Override
 	public void setResposta(String resposta) {
