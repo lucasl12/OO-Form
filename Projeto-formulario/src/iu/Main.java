@@ -1,11 +1,16 @@
 package iu;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import formulario.Formulario;
 import perguntas.Pergunta;
 import perguntasAbertas.TextoCurto;
 import perguntasAbertas.TextoLongo;
+import perguntasFechadas.Alternativa;
+import perguntasFechadas.Opcional;
 
 public class Main {
 
@@ -38,33 +43,32 @@ public class Main {
 		int quantidadeperg = Integer.parseInt(QuantidadePerg.getText().toString());
 
 		
-		String opcoes[] = new String[quantidadeperg];
-		String enuciadoTextoCurto[]= new String[quantidadeperg];
+		String opcoes[] = new String[quantidadeperg]; //string que armazena as opcoes que o usuario digitar
+		String enuciadoTextoCurto[]= new String[quantidadeperg];// Array que armazena os enuciados das respectivas perguntas
 		String enuciadoTextoLongo[] = new String[quantidadeperg];
 		String enuciadoAlternativa[] = new String[quantidadeperg];
+		String enuciadoOpcoes[] = new String[quantidadeperg];
 		
-		
-		int quantidadepergTxtCurto=0;
-		int quantidadedepegTxtLongo=0;
 		
 		
 		
 		String itensAlternativa[]= {};
+		//criar itens das outras que precisam de itens
 		
 		for(int i=0;i<quantidadeperg;i++) {
-			String opcao =JOptionPane.showInputDialog("qual tipo de pergunta deseja criar?"+(1+i));
+			String opcao =JOptionPane.showInputDialog("qual tipo de pergunta deseja criar?"+(1+i)); //lendo a opcao
 			if(opcao.equalsIgnoreCase("texto curto") || opcao.equalsIgnoreCase("textocurto")) {
-				opcoes[i]=opcao;
-				String enuciado = JOptionPane.showInputDialog("Qual o enuciado?");
-				enuciadoTextoCurto[i]=enuciado;
-				quantidadepergTxtCurto=quantidadepergTxtCurto+1;
+				opcoes[i]=opcao;// salvando no array
+				String enuciado = JOptionPane.showInputDialog("Qual o enuciado?"); // lendo o enuciado
+				enuciadoTextoCurto[i]=enuciado; //salvando no enuciado
+				
 				
 			}
 			if(opcao.equalsIgnoreCase("texto longo") || opcao.equalsIgnoreCase("textolongo")) {
 				opcoes[i]= opcao;
 				String enuciado = JOptionPane.showInputDialog("Qual o enuciado?");
 				enuciadoTextoLongo[i]=enuciado;
-				quantidadedepegTxtLongo=quantidadedepegTxtLongo+1;
+
 			}
 			
 			if(opcao.equalsIgnoreCase("Alternativa") || opcao.equalsIgnoreCase("alternativas")) { 
@@ -89,11 +93,19 @@ public class Main {
 					String item = JOptionPane.showInputDialog("Qual o item" +(1+it));
 					itensAlternativa[it]=item;
 				}
-						
-
+				
+			}
 			
+			if(opcao.equalsIgnoreCase("opcional")){
+				opcoes[i]= opcao;
+				String enuciado = JOptionPane.showInputDialog("Qual o enuciado?");
+				enuciadoOpcoes[i]=enuciado;
 			
 			}
+			
+	
+			
+			
 			
 			
 			
@@ -105,20 +117,23 @@ public class Main {
 		
 		    
 		Pergunta perg;
+		ArrayList <Pergunta> p = new ArrayList<Pergunta>();
 		
-		String respostatipoTextoCurto[]= new String[quantidadepergTxtCurto];
-		String respostaTipoTextoLongo[] = new String[quantidadedepegTxtLongo];
-		String respostaTipoalternativa[]= {};
+		String respostatipoTextoCurto[]= new String[quantidadeperg];
+		String respostaTipoTextoLongo[] = new String[quantidadeperg];
+		String respostaTipoalternativa[]= new String [quantidadeperg];
 		String respostaTipoLista []= {};
-		String respostatipoOpcinal[]= {};
+		String respostatipoOpcinal[]= new String [quantidadeperg];
 		for(int j=0;j<quantidadeperg;j++) {
 			if(opcoes[j].equalsIgnoreCase("Textocurto")|| opcoes[j].equalsIgnoreCase("texto curto")) {
 				perg = new TextoCurto();
-				perg.setEnuciadoPergunta(enuciadoTextoCurto[j]);
-				respostatipoTextoCurto[j]= JOptionPane.showInputDialog(enuciadoTextoCurto[j]);
-				perg.setResposta(respostatipoTextoCurto[j]);
-				System.out.println(perg.getEnuciadoPergunta());
-				System.out.println(perg.getResposta());
+				perg.setEnuciadoPergunta(enuciadoTextoCurto[j]);// setando o enunciado de acordo com enuciado
+				respostatipoTextoCurto[j]= JOptionPane.showInputDialog(enuciadoTextoCurto[j]); //recebendo a resposta
+				perg.setResposta(respostatipoTextoCurto[j]);// setendo a resposta
+				p.add(perg);
+				//System.out.println(perg.getEnuciadoPergunta());
+				//System.out.println(perg.getResposta());
+				
 			}
 			
 			if(opcoes[j].equalsIgnoreCase("textolongo")|| opcoes[j].equalsIgnoreCase("texto longo")) {
@@ -128,18 +143,67 @@ public class Main {
 				perg.setResposta(respostaTipoTextoLongo[j]);
 				System.out.println(perg.getEnuciadoPergunta());
 				System.out.println(perg.getResposta());
+				p.add(perg);
 			}
-			//if(opcoes[j].equalsIgnoreCase("textolongo")|| opcoes[j].equalsIgnoreCase("texto longo")) {
+			/*if(opcoes[j].equalsIgnoreCase("Alternativa")|| opcoes[j].equalsIgnoreCase("Alternativas")) {
+				Alternativa alt = new Alternativa();
+				alt.setEnuciadoPergunta(enuciadoAlternativa[j]);
+				respostaTipoalternativa[j] = JOptionPane.showInputDialog(enuciadoTextoLongo[j]);
 				
-			//}
+		}
+			*/
+			
+			if(opcoes[j].equalsIgnoreCase("opcional")) {
+				Opcional op = new Opcional();
+				op.setEnuciadoPergunta(enuciadoOpcoes[j]);
+				String resposta="";
+				int valor =JOptionPane.showConfirmDialog(null,enuciadoOpcoes[j]);
+				if(valor==0) {
+					resposta="sim";
+				}
+				if(valor==1) {
+					resposta = "não";
+				}
+			
+				respostatipoOpcinal[j]=resposta;
+				op.setResposta(resposta);
+			
+				
+			}
+			
+			
+			
+			
+			
 		}
 		
 		
 		
 		
 		
-		    
+		Formulario f = new Formulario(nomeFormulario, Descricao, DataInicio, DataFinal, p);
+		JOptionPane.showMessageDialog(null, 
+		"                                    Formulario criado!                                      " + "\n" +
+						"Nome do formulario: " + f.getNomeFormulario() +"\n" +
+						"Descrição do formulario: " + f.getDescricaoFormulario() + "\n" +
+						"Data de inicio: " + f.getDataInicio() + "\n " +
+					     "Data de Termino: " + f.getDataFinal() + "\n " ); 
+		
+		
+		
+	/*	JOptionPane.showMessageDialog(null,"As perguntas de texto curto foram:" + "\n" +
+			enuciadoTextoCurto +"\n" + "As respostas foram: " +"\n" + respostatipoTextoCurto 
+				
+				);*/
+		
+		for(int bo=0;bo<quantidadeperg;bo++) {
+			JOptionPane.showMessageDialog(null,"As perguntas de texto curto foram:" + "\n" +
+					enuciadoTextoCurto[bo] +"\n" + "As respostas foram: " +"\n" + respostatipoTextoCurto[bo]);
+		}
+		
+				
 }
+
 				
 }            
 		                

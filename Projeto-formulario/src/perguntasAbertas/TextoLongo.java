@@ -4,7 +4,7 @@ public class TextoLongo extends PerguntaAberta {
 
 	@Override
 	public void setResposta(String resposta) {
-		// TODO Auto-generated method stub
+		this.resposta=resposta;
 		
 	}
 
