@@ -1,5 +1,8 @@
 package formulario;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import perguntas.Pergunta;
@@ -57,7 +60,25 @@ public class Formulario {
 		this.pergunta = pergunta;
 	}
 	
-	public boolean salvarFormulario(Formulario f) {
-		return true;
+	public String salvarFormulario(Formulario f) {
+
+		try {
+			FileWriter fw = new FileWriter(nomeFormulario,true);
+			PrintWriter pw = new PrintWriter(nomeFormulario);
+			pw.println("Nome: "+this.nomeFormulario);
+			pw.println("Data de Início: "+this.dataInicio);
+			pw.println("Data Final: "+this.dataFinal);
+			pw.println("Descrição: "+this.descricaoFormulario);
+			pw.println("Pergunta: "+this.pergunta);
+			pw.flush();
+			pw.close();
+			fw.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 }

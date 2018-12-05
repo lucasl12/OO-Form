@@ -22,6 +22,15 @@ public abstract class PerguntasFechadas extends Pergunta {
 		this.listaItems = listaItems;
 	}
 	
+	public  void novaPergunta(String enuciadoPergunta,String resposta,String itens[], int quantidade) {
+		this.enuciadoPergunta= enuciadoPergunta;
+		//this.resposta = resposta;
+		this.listaItems = itens;
+		this.quantidadeitens = quantidade;
+		this.resposta = resposta;
+	
+		
+	}
 	
 	
 	
