@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import perguntas.Pergunta;
 import sun.util.calendar.BaseCalendar.Date;
 
@@ -60,11 +62,11 @@ public class Formulario {
 		this.pergunta = pergunta;
 	}
 	
-	public String salvarFormulario(Formulario f) {
+	public String salvarFormulario() {
 
 		try {
-			FileWriter fw = new FileWriter(nomeFormulario,true);
-			PrintWriter pw = new PrintWriter(nomeFormulario);
+			FileWriter fw = new FileWriter(nomeFormulario +".txt",true);
+			PrintWriter pw = new PrintWriter(fw);
 			pw.println("Nome: "+this.nomeFormulario);
 			pw.println("Data de Início: "+this.dataInicio);
 			pw.println("Data Final: "+this.dataFinal);
@@ -81,4 +83,5 @@ public class Formulario {
 		
 		return null;
 	}
+	
 }

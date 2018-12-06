@@ -1,5 +1,8 @@
 package iu;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -187,8 +190,9 @@ public class Main {
 						"Nome do formulario: " + f.getNomeFormulario() +"\n" +
 						"Descrição do formulario: " + f.getDescricaoFormulario() + "\n" +
 						"Data de inicio: " + f.getDataInicio() + "\n " +
-					     "Data de Termino: " + f.getDataFinal() + "\n " ); 
+					     "Data de Termino: " + f.getDataFinal() + "\n "+ f.salvarFormulario() + "\n" ); 
 		
+	
 		
 		
 	/*	JOptionPane.showMessageDialog(null,"As perguntas de texto curto foram:" + "\n" +
