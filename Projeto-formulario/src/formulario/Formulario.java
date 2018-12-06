@@ -62,7 +62,9 @@ public class Formulario {
 		this.pergunta = pergunta;
 	}
 	
-	public String salvarFormulario() {
+	public String salvarFormulario(String[] opcoes,int quantidadeoerg,String[] enuciadopergCurta,String[] respostaCurta,
+			String[]enuciadolongo,String[]respostalongo,String[]enuciadopergopcional,String[]respostaopcional
+			) {
 
 		try {
 			FileWriter fw = new FileWriter(nomeFormulario +".txt",true);
@@ -71,7 +73,29 @@ public class Formulario {
 			pw.println("Data de Início: "+this.dataInicio);
 			pw.println("Data Final: "+this.dataFinal);
 			pw.println("Descrição: "+this.descricaoFormulario);
-			pw.println("Pergunta: "+this.pergunta);
+			pw.println("");
+			for(int i=0;i<quantidadeoerg;i++) {
+				if(opcoes[i].equalsIgnoreCase("Texto curto")|| opcoes[i].equalsIgnoreCase("Textocurto")) {
+				pw.println("Pergunta Texto curto:"+enuciadopergCurta[i]);
+				pw.println("Resposta:" +respostaCurta[i]+"\n");
+				pw.println("");
+				}
+				
+				if(opcoes[i].equalsIgnoreCase("Texto Longo")|| opcoes[i].equalsIgnoreCase("Textolongo")) {
+				pw.println("Pergunta Texto Longo:"+enuciadolongo[i]);
+				pw.println("Resposta:" +respostalongo[i]+"\n");
+				pw.println("");
+				}
+				
+				if(opcoes[i].equalsIgnoreCase("opcional")){
+				pw.println("Pergunta Opcioanl:"+enuciadopergopcional[i]);
+				pw.println("Resposta:" +respostaopcional[i]+"\n");
+				pw.println("");
+				}
+			}
+			
+			
+			
 			pw.flush();
 			pw.close();
 			fw.close();

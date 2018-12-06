@@ -59,7 +59,7 @@ public class Main {
 		//criar itens das outras que precisam de itens
 		
 		for(int i=0;i<quantidadeperg;i++) {
-			String opcao =JOptionPane.showInputDialog("qual tipo de pergunta deseja criar?"+(1+i)); //lendo a opcao
+			String opcao =JOptionPane.showInputDialog("qual tipo da " + (1+i)+ "° pergunta deseja criar?"); //lendo a opcao
 			if(opcao.equalsIgnoreCase("texto curto") || opcao.equalsIgnoreCase("textocurto")) {
 				opcoes[i]=opcao;// salvando no array
 				String enuciado = JOptionPane.showInputDialog("Qual o enuciado?"); // lendo o enuciado
@@ -185,26 +185,31 @@ public class Main {
 		
 		
 		Formulario f = new Formulario(nomeFormulario, Descricao, DataInicio, DataFinal, p);
+		f.salvarFormulario(opcoes,quantidadeperg,enuciadoTextoCurto, respostatipoTextoCurto,enuciadoTextoLongo,respostaTipoTextoLongo,enuciadoOpcoes,respostatipoOpcinal);
+		
 		JOptionPane.showMessageDialog(null, 
 		"                                    Formulario criado!                                      " + "\n" +
 						"Nome do formulario: " + f.getNomeFormulario() +"\n" +
 						"Descrição do formulario: " + f.getDescricaoFormulario() + "\n" +
 						"Data de inicio: " + f.getDataInicio() + "\n " +
-					     "Data de Termino: " + f.getDataFinal() + "\n "+ f.salvarFormulario() + "\n" ); 
+					    "Data de Termino: " + f.getDataFinal() + "\n "+ "\n" ); 
 		
 	
 		
-		
-	/*	JOptionPane.showMessageDialog(null,"As perguntas de texto curto foram:" + "\n" +
-			enuciadoTextoCurto +"\n" + "As respostas foram: " +"\n" + respostatipoTextoCurto 
-				
-				);*/
-		
 		for(int bo=0;bo<quantidadeperg;bo++) {
+			if(opcoes[bo].equalsIgnoreCase("Texto curto")|| opcoes[bo].equalsIgnoreCase("Textocurto")) {
 			JOptionPane.showMessageDialog(null,"As perguntas de texto curto foram:" + "\n" +
-					enuciadoTextoCurto[bo] +"\n" + "As respostas foram: " +"\n" + respostatipoTextoCurto[bo]);
+					enuciadoTextoCurto[bo] +"\n" + "As respostas foram: " +"\n" + respostatipoTextoCurto[bo]);}
+			
+			if(opcoes[bo].equalsIgnoreCase("Texto longo")|| opcoes[bo].equalsIgnoreCase("textolongo")) {
+				JOptionPane.showMessageDialog(null,"As perguntas de texto longo foram:" + "\n" +
+						enuciadoTextoLongo[bo] +"\n" + "As respostas foram: " +"\n" + respostaTipoTextoLongo[bo]);}
+			
+			if(opcoes[bo].equalsIgnoreCase("opcional")|| opcoes[bo].equalsIgnoreCase("opcao")) {
+				JOptionPane.showMessageDialog(null,"As perguntas opcionas foram:" + "\n" +
+						enuciadoOpcoes[bo] +"\n" + "As respostas foram: " +"\n" + respostatipoOpcinal[bo]);
+			}
 		}
-		
 				
 }
 
