@@ -14,6 +14,7 @@ import perguntasAbertas.TextoCurto;
 import perguntasAbertas.TextoLongo;
 import perguntasFechadas.Alternativa;
 import perguntasFechadas.Opcional;
+import telas.CheckBox;
 
 public class Main {
 
@@ -148,13 +149,13 @@ public class Main {
 				System.out.println(perg.getResposta());
 				p.add(perg);
 			}
-			/*if(opcoes[j].equalsIgnoreCase("Alternativa")|| opcoes[j].equalsIgnoreCase("Alternativas")) {
+			if(opcoes[j].equalsIgnoreCase("Alternativa")|| opcoes[j].equalsIgnoreCase("Alternativas")) {
 				Alternativa alt = new Alternativa();
 				alt.setEnuciadoPergunta(enuciadoAlternativa[j]);
 				respostaTipoalternativa[j] = JOptionPane.showInputDialog(enuciadoTextoLongo[j]);
-				
+				CheckBox check1 = new CheckBox();
 		}
-			*/
+			
 			
 			if(opcoes[j].equalsIgnoreCase("opcional")) {
 				Opcional op = new Opcional();

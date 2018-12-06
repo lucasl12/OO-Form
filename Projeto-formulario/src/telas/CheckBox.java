@@ -14,7 +14,7 @@ public class CheckBox extends JFrame{
 			setLayout(new FlowLayout());
 			add(teste);
 			
-			setTitle("Título da Janela");
+			setTitle("Alternativa");
 			setSize(400,300);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			setLocationRelativeTo(null);
