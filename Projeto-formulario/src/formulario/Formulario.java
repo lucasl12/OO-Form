@@ -88,7 +88,7 @@ public class Formulario {
 				}
 				
 				if(opcoes[i].equalsIgnoreCase("opcional")){
-				pw.println("Pergunta Opcioanl:"+enuciadopergopcional[i]);
+				pw.println("Pergunta Opcional:"+enuciadopergopcional[i]);
 				pw.println("Resposta:" +respostaopcional[i]+"\n");
 				pw.println("");
 				}

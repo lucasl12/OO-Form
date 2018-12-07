@@ -14,7 +14,7 @@ import perguntasAbertas.TextoCurto;
 import perguntasAbertas.TextoLongo;
 import perguntasFechadas.Alternativa;
 import perguntasFechadas.Opcional;
-import telas.CheckBox;
+
 
 public class Main {
 
@@ -153,7 +153,7 @@ public class Main {
 				Alternativa alt = new Alternativa();
 				alt.setEnuciadoPergunta(enuciadoAlternativa[j]);
 				respostaTipoalternativa[j] = JOptionPane.showInputDialog(enuciadoTextoLongo[j]);
-				CheckBox check1 = new CheckBox();
+			
 		}
 			
 			
