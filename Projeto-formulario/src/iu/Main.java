@@ -235,6 +235,7 @@ public class Main {
 				a= new Tela();
 				a.criarTela(quantidade,itens,enuciado,false);
 				System.out.println(respostam);
+		
 //				alt.setResposta(respostam);
 //				respostaTipoalternativa[j]=alt.getResposta();
 				
@@ -318,6 +319,8 @@ public class Main {
 		f.salvarFormulario(opcoes,quantidadeperg,enuciadoTextoCurto, respostatipoTextoCurto,enuciadoTextoLongo,
 				respostaTipoTextoLongo,enuciadoOpcoes,respostatipoOpcinal);
 		
+
+	
 		JOptionPane.showMessageDialog(null, 
 		"                                    Formulario criado!                                      " + "\n" +
 						"Nome do formulario: " + f.getNomeFormulario() +"\n" +
@@ -340,6 +343,19 @@ public class Main {
 				JOptionPane.showMessageDialog(null,"As perguntas opcionas foram:" + "\n" +
 						enuciadoOpcoes[bo] +"\n" + "As respostas foram: " +"\n" + respostatipoOpcinal[bo]);
 			}
+	/*		if(opcoes[bo].equalsIgnoreCase("Alternativa")) {
+				JOptionPane.showMessageDialog(null,"As perguntas opcionas foram:" + "\n" +
+						enuciadoAlternativa[bo] +"\n" + "As respostas foram: " +"\n" + respostaTipoalternativa[bo]);
+			}
+			if(opcoes[bo].equalsIgnoreCase("Lista")) {
+				JOptionPane.showMessageDialog(null,"As perguntas opcionas foram:" + "\n" +
+						enuciadoLista[bo] +"\n" + "As respostas foram: " +"\n" + respostaTipoLista[bo]);
+			}
+			
+			if(opcoes[bo].equalsIgnoreCase("Exclusiva")) {
+				JOptionPane.showMessageDialog(null,"As perguntas opcionas foram:" + "\n" +
+						enunciadoExclusiva[bo] +"\n" + "As respostas foram: " +"\n" + respostaTipoExclusiva[bo]);
+			}*/
 		}
 				
 }
