@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import formulario.Formulario;
-import jframe.Tela;
+
 import perguntas.Pergunta;
 import perguntasAbertas.TextoCurto;
 import perguntasAbertas.TextoLongo;
@@ -17,10 +17,18 @@ import perguntasFechadas.Alternativa;
 import perguntasFechadas.Exclusiva;
 import perguntasFechadas.Lista;
 import perguntasFechadas.Opcional;
+import tela.Tela;
 
 public class Main {
 
+	public static  String respostam;
+	public void imprimir(String r) {
+		if(r!=null) {
+		respostam=r;}
+	}
+
 	public static void main(String[] args) {
+		
 		
 		//criação do campo de obter informações do formulario
 		 
@@ -213,8 +221,7 @@ public class Main {
 				perg.setEnuciadoPergunta(enuciadoTextoLongo[j]);
 				respostaTipoTextoLongo[j]=JOptionPane.showInputDialog(enuciadoTextoLongo[j]);
 				perg.setResposta(respostaTipoTextoLongo[j]);
-				//System.out.println(perg.getEnuciadoPergunta());
-				//System.out.println(perg.getResposta());
+				
 				p.add(perg);
 			}
 			if(opcoes[j].equalsIgnoreCase("Alternativa")|| opcoes[j].equalsIgnoreCase("Alternativas")) {
@@ -227,8 +234,12 @@ public class Main {
 				String enuciado = alt.getEnuciadoPergunta();
 				a= new Tela();
 				a.criarTela(quantidade,itens,enuciado,false);
-				//set resposta
-				//perg= alt;
+				System.out.println(respostam);
+//				alt.setResposta(respostam);
+//				respostaTipoalternativa[j]=alt.getResposta();
+				
+				
+			
 				p.add(alt);
 		}
 			
@@ -242,6 +253,8 @@ public class Main {
 				String enunciado = list.getEnuciadoPergunta();
 				a = new Tela();
 				a.criarTela(quantidade, itens, enunciado,true);
+				//list.setResposta(respostam);
+				//respostaTipoLista[j]= list.getResposta();
 				
 				
 				//perg = list;
@@ -278,7 +291,9 @@ public class Main {
 				String enunciado = exc.getEnuciadoPergunta();
 				a = new Tela();
 				a.criarTela(quantidade, itens, enunciado,true);
-				System.out.println(a.respot());
+				exc.setResposta(respostam);
+				respostaTipoExclusiva[j]=exc.getResposta();
+				
 				
 				//preg = exc;
 				
@@ -328,153 +343,12 @@ public class Main {
 		}
 				
 }
+	
+	
 
 				
 }            
 		                
 		      
-		                
-		     
-
-		    
-
-
-		    
-
-
-		
-		
-		
-		
-
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*
 	
-			if(opcao==0) {
-				String enuciado = JOptionPane.showInputDialog("Qual o enuciado?");
-				perg = new TextoCurto();
-				perg.setEnuciadoPergunta(enuciado);
-				p.add(perg);
-				
-				
-			}
-			
-			if(opcao==2) {
-				String enuciado = JOptionPane.showInputDialog("Qual o enuciado?");
-				perg = new TextoLongo();
-				perg.setEnuciadoPergunta(enuciado);
-				p.add(perg);
-			}
-			
-			if(opcao==3) {
-				// elementos somente em Perguntas;
-				Alternativa alt = new Alternativa();
-				perg = alt;
-			}
-			
-		
-		}
-		
-		
-		
-		Formulario f = new Formulario(nomeFormulario,Descricao,DataInicio,DataFinal,p);
-
-//		
-//		JOptionPane.showMessageDialog(null, 
-//		"--------------Formulario criado!--------------" + "\n" +
-//				"Nome do formulario: " + f.getNomeFormulario() +"\n" +
-//				"Descrição do formulario: " + f.getDescricaoFormulario() + "\n" +
-//				"Data de inicio: " + f.getDataInicio() + "\n " +
-//				"Data de Termino: " + f.getDataFinal() + "\n " ); 
-				
-				//como imprimo as perguntas.
-		
-	
-		
-		
-		
-		
-		
-		*/
-		
-		
-	
-	
-		
-		
 	
