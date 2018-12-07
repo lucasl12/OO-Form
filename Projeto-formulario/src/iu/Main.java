@@ -9,10 +9,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import formulario.Formulario;
+import jframe.Tela;
 import perguntas.Pergunta;
 import perguntasAbertas.TextoCurto;
 import perguntasAbertas.TextoLongo;
 import perguntasFechadas.Alternativa;
+import perguntasFechadas.Exclusiva;
+import perguntasFechadas.Lista;
 import perguntasFechadas.Opcional;
 
 public class Main {
@@ -51,11 +54,18 @@ public class Main {
 		String enuciadoTextoLongo[] = new String[quantidadeperg];
 		String enuciadoAlternativa[] = new String[quantidadeperg];
 		String enuciadoOpcoes[] = new String[quantidadeperg];
+		String enuciadoLista[] = new String[quantidadeperg];
+		String enunciadoExclusiva[] = new String[quantidadeperg];
 		
 		
 		
 		
 		String itensAlternativa[]= {};
+		String itensLista[]= {};
+		String itensExclusiva[]= {};
+		int quantidadei=0;
+		int quantidadeiL=0;
+		int quantidadeiE=0;
 		//criar itens das outras que precisam de itens
 		
 		for(int i=0;i<quantidadeperg;i++) {
@@ -75,6 +85,7 @@ public class Main {
 			}
 			
 			if(opcao.equalsIgnoreCase("Alternativa") || opcao.equalsIgnoreCase("alternativas")) { 
+				opcoes[i]=opcao;
 				JTextField Enunciado = new JTextField();
 				JTextField quantidadedeitens = new JTextField();
 				
@@ -88,7 +99,7 @@ public class Main {
 				JOptionPane.showConfirmDialog(null,fields2,"CRIAÇÃO DA ALTERNATIVA",JOptionPane.CLOSED_OPTION);
 				
 				String enunciado = Enunciado.getText().toString();
-				int quantidadei = Integer.parseInt(quantidadedeitens.getText().toString());
+				 quantidadei = Integer.parseInt(quantidadedeitens.getText().toString());
 				
 				enuciadoAlternativa[i]=enunciado;
 				itensAlternativa= new String[quantidadei];
@@ -97,7 +108,35 @@ public class Main {
 					itensAlternativa[it]=item;
 				}
 				
+				
 			}
+			
+			if(opcao.equalsIgnoreCase("Lista")) {
+				opcoes[i]=opcao;
+				JTextField Enunciado = new JTextField();
+				JTextField quantidadedeitens = new JTextField();
+				
+				
+				Object[] fields2= {
+						"Enuciado",Enunciado,
+						"Quantidade de itens ",quantidadedeitens,
+						
+							
+		};	
+				JOptionPane.showConfirmDialog(null,fields2,"CRIAÇÃO DA LISTA",JOptionPane.CLOSED_OPTION);
+				
+				String enunciado = Enunciado.getText().toString();
+				 quantidadeiL = Integer.parseInt(quantidadedeitens.getText().toString());
+				
+				enuciadoLista[i]=enunciado;
+				itensLista= new String[quantidadeiL];
+				for(int it=0;it<quantidadeiL;it++) {
+					String item = JOptionPane.showInputDialog("Qual o item" +(1+it));
+					itensLista[it]=item;
+				}
+				
+			}
+			
 			
 			if(opcao.equalsIgnoreCase("opcional")){
 				opcoes[i]= opcao;
@@ -105,6 +144,34 @@ public class Main {
 				enuciadoOpcoes[i]=enuciado;
 			
 			}
+			
+			if(opcao.equalsIgnoreCase("Exclusiva")) {
+				opcoes[i]=opcao;
+				JTextField Enunciado = new JTextField();
+				JTextField quantidadedeitens = new JTextField();
+				
+				
+				Object[] fields2= {
+						"Enuciado",Enunciado,
+						"Quantidade de itens ",quantidadedeitens,
+						
+							
+		};	
+				JOptionPane.showConfirmDialog(null,fields2,"CRIAÇÃO DA EXCLUSIVA",JOptionPane.CLOSED_OPTION);
+				
+				String enunciado = Enunciado.getText().toString();
+				 quantidadeiE = Integer.parseInt(quantidadedeitens.getText().toString());
+				
+				enunciadoExclusiva[i]=enunciado;
+				itensExclusiva= new String[quantidadeiE];
+				for(int it=0;it<quantidadeiE;it++) {
+					String item = JOptionPane.showInputDialog("Qual o item" +(1+it));
+					itensExclusiva[it]=item;
+				}
+				
+			}
+			
+			
 			
 	
 			
@@ -121,12 +188,14 @@ public class Main {
 		    
 		Pergunta perg;
 		ArrayList <Pergunta> p = new ArrayList<Pergunta>();
+		Tela a ;
 		
 		String respostatipoTextoCurto[]= new String[quantidadeperg];
 		String respostaTipoTextoLongo[] = new String[quantidadeperg];
 		String respostaTipoalternativa[]= new String [quantidadeperg];
-		String respostaTipoLista []= {};
+		String respostaTipoLista []= new String [quantidadeperg];
 		String respostatipoOpcinal[]= new String [quantidadeperg];
+		String respostaTipoExclusiva []= new String [quantidadeperg];
 		for(int j=0;j<quantidadeperg;j++) {
 			if(opcoes[j].equalsIgnoreCase("Textocurto")|| opcoes[j].equalsIgnoreCase("texto curto")) {
 				perg = new TextoCurto();
@@ -144,17 +213,43 @@ public class Main {
 				perg.setEnuciadoPergunta(enuciadoTextoLongo[j]);
 				respostaTipoTextoLongo[j]=JOptionPane.showInputDialog(enuciadoTextoLongo[j]);
 				perg.setResposta(respostaTipoTextoLongo[j]);
-				System.out.println(perg.getEnuciadoPergunta());
-				System.out.println(perg.getResposta());
+				//System.out.println(perg.getEnuciadoPergunta());
+				//System.out.println(perg.getResposta());
 				p.add(perg);
 			}
-			/*if(opcoes[j].equalsIgnoreCase("Alternativa")|| opcoes[j].equalsIgnoreCase("Alternativas")) {
+			if(opcoes[j].equalsIgnoreCase("Alternativa")|| opcoes[j].equalsIgnoreCase("Alternativas")) {
 				Alternativa alt = new Alternativa();
 				alt.setEnuciadoPergunta(enuciadoAlternativa[j]);
-				respostaTipoalternativa[j] = JOptionPane.showInputDialog(enuciadoTextoLongo[j]);
-				
+				alt.setListaItems(itensAlternativa);
+				String itens[]= alt.getListaItems();
+				alt.setQuantidadeitens(quantidadei);
+				int quantidade = alt.getQuantidadeitens();
+				String enuciado = alt.getEnuciadoPergunta();
+				a= new Tela();
+				a.criarTela(quantidade,itens,enuciado,false);
+				//set resposta
+				//perg= alt;
+				p.add(alt);
 		}
-			*/
+			
+			if(opcoes[j].equalsIgnoreCase("Lista")) {
+				Lista list = new Lista();
+				list.setEnuciadoPergunta(enuciadoLista[j]);
+				list.setListaItems(itensLista);
+				String itens[]= list.getListaItems();
+				list.setQuantidadeitens(quantidadeiL);
+				int quantidade = list.getQuantidadeitens();
+				String enunciado = list.getEnuciadoPergunta();
+				a = new Tela();
+				a.criarTela(quantidade, itens, enunciado,true);
+				
+				
+				//perg = list;
+				p.add(list);
+			};
+			
+			
+			
 			
 			if(opcoes[j].equalsIgnoreCase("opcional")) {
 				Opcional op = new Opcional();
@@ -173,6 +268,26 @@ public class Main {
 			
 				
 			}
+			if(opcoes[j].equalsIgnoreCase("exclusiva")) {
+				Exclusiva exc = new Exclusiva();
+				exc.setEnuciadoPergunta(enunciadoExclusiva[j]);
+				exc.setListaItems(itensExclusiva);
+				String itens[]= exc.getListaItems();
+				exc.setQuantidadeitens(quantidadeiE);
+				int quantidade = exc.getQuantidadeitens();
+				String enunciado = exc.getEnuciadoPergunta();
+				a = new Tela();
+				a.criarTela(quantidade, itens, enunciado,true);
+				System.out.println(a.respot());
+				
+				//preg = exc;
+				
+				p.add(exc);
+				
+				
+			}
+			
+			
 			
 			
 			
@@ -185,7 +300,8 @@ public class Main {
 		
 		
 		Formulario f = new Formulario(nomeFormulario, Descricao, DataInicio, DataFinal, p);
-		f.salvarFormulario(opcoes,quantidadeperg,enuciadoTextoCurto, respostatipoTextoCurto,enuciadoTextoLongo,respostaTipoTextoLongo,enuciadoOpcoes,respostatipoOpcinal);
+		f.salvarFormulario(opcoes,quantidadeperg,enuciadoTextoCurto, respostatipoTextoCurto,enuciadoTextoLongo,
+				respostaTipoTextoLongo,enuciadoOpcoes,respostatipoOpcinal);
 		
 		JOptionPane.showMessageDialog(null, 
 		"                                    Formulario criado!                                      " + "\n" +
