@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import formulario.Formulario;
-
+import jframe.Tela;
 import perguntas.Pergunta;
 import perguntasAbertas.TextoCurto;
 import perguntasAbertas.TextoLongo;
@@ -17,16 +17,11 @@ import perguntasFechadas.Alternativa;
 import perguntasFechadas.Exclusiva;
 import perguntasFechadas.Lista;
 import perguntasFechadas.Opcional;
-import tela.Tela;
+
 
 public class Main {
 
-	public static  String respostam;
-	public void imprimir(String r) {
-		if(r!=null) {
-		respostam=r;}
-	}
-
+	
 	public static void main(String[] args) {
 		
 		
@@ -234,9 +229,7 @@ public class Main {
 				String enuciado = alt.getEnuciadoPergunta();
 				a= new Tela();
 				a.criarTela(quantidade,itens,enuciado,false);
-				System.out.println(respostam);
-		
-//				alt.setResposta(respostam);
+				
 //				respostaTipoalternativa[j]=alt.getResposta();
 				
 				
@@ -292,8 +285,7 @@ public class Main {
 				String enunciado = exc.getEnuciadoPergunta();
 				a = new Tela();
 				a.criarTela(quantidade, itens, enunciado,true);
-				exc.setResposta(respostam);
-				respostaTipoExclusiva[j]=exc.getResposta();
+			
 				
 				
 				//preg = exc;
